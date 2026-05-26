@@ -1,16 +1,16 @@
 package tool;
 
-public class Tools {
+public class Tool {
 
     private int id;
     private String name;
     private String description;
 
-    public Tools(){
+    public Tool(){
 
     }
 
-    public Tools(int id, String name, String description){
+    public Tool(int id, String name, String description){
         this.id = id;
         this.name = name;
         this.description = description;
