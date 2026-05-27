@@ -11,6 +11,13 @@ public class ToolInventoryApp {
 
         ArrayList<Tool> inventory = new ArrayList<>();
 
+        inventory.add(new Tool(101, "Wrench", "3/8 to 15/16 set"));
+        inventory.add(new Tool(102, "Wrench", "6mm to 24 mm set"));
+        inventory.add(new Tool(103, "Wrench", "1 inch"));
+        inventory.add(new Tool(104, "Wrench", "25mm"));
+        inventory.add(new Tool(105, "Drill bit", "helix index standard set, 1/16 to 1/2"));
+        inventory.add(new Tool(106,"Drill bit", "helix standard, 3/4"));
+
         int userChoice;
 
         // Do/While loop displays main menu, keeps looping to main menu until user enters 9 to exit program.
@@ -21,6 +28,7 @@ public class ToolInventoryApp {
             System.out.println("1. Add tool");
             System.out.println("2. Remove tool");
             System.out.println("3. Search tool by name");
+            System.out.println("4. Display inventory");
             System.out.println("9. Exit\n");
             System.out.print("Enter choice: ");
 
@@ -38,10 +46,13 @@ public class ToolInventoryApp {
                     addTool(input, inventory);
                     break;
                 case 2:
-                    System.out.println("Remove tool coming soon");
+                    removeTool(input, inventory);
                     break;
                 case 3:
                     System.out.println("Search tool coming soon");
+                    break;
+                case 4:
+                    System.out.println(inventory);
                     break;
                 case 9:
                     System.out.println("\nExiting the program...");
@@ -61,7 +72,7 @@ public class ToolInventoryApp {
 
             String quit = "";
 
-            // do/while loop to add a tool
+            // do/while loop so the user can add more than one tool
             do{
                 System.out.println();
                 System.out.println("=== Add tool ===");
@@ -82,6 +93,46 @@ public class ToolInventoryApp {
                 System.out.println("\n New tool added successfully");
 
                 System.out.println("\nAdd another tool?");
+                System.out.println("Enter Y or N: ");
+
+                quit = input.nextLine();
+
+            } while(!quit.equalsIgnoreCase("n") );
+        }
+
+        private static void removeTool(Scanner input, ArrayList<Tool> tools){
+            String quit = "";
+
+            System.out.println(tools);
+
+            // do/while loop so the user can remove more than one tool
+            do{
+                System.out.println();
+                System.out.println("=== Remove tool ===");
+                System.out.println();
+                System.out.println("Enter the ID of the tool you wish to remove.");
+                System.out.println();
+                System.out.println("ID: ");
+                int id = input.nextInt();
+                input.nextLine();
+
+                Tool toolToRemove = null;
+
+                for(Tool tool: tools){
+                    if(tool.getId() == id){
+                        toolToRemove = tool;
+                        break;
+                    }
+                }
+
+                if(toolToRemove != null){
+                    tools.remove(toolToRemove);
+                    System.out.println("\nTool with id " + id + " removed successfully.");
+                } else {
+                    System.out.println("\nError: No tool with the id " + id + " found. Enter a different id.");
+                }
+
+                System.out.println("\nRemove another tool?");
                 System.out.println("Enter Y or N: ");
 
                 quit = input.nextLine();
