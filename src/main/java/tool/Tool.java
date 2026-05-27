@@ -41,6 +41,6 @@ public class Tool {
     }
 
     public String toString() {
-        return("ID: " + this.id + ", " + "Name: " + this.name + ", " + "Description: " + this.description);
+        return("ID: " + this.id + ", " + "Name: " + this.name + ", " + "Description: " + this.description + "\n");
     }
 }
