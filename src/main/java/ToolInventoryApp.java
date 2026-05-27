@@ -127,7 +127,7 @@ public class ToolInventoryApp {
 
                 if(toolToRemove != null){
                     tools.remove(toolToRemove);
-                    System.out.println("\nTool with ID " + id + " removed successfully.");
+                    System.out.println("\nTool with id " + id + " removed successfully.");
                 } else {
                     System.out.println("\nError: No tool with the id " + id + " found. Enter a different id.");
                 }
