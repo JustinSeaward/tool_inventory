@@ -52,7 +52,7 @@ public class ToolInventoryApp {
                     searchToolByName(input, inventory);
                     break;
                 case 4:
-                    System.out.println(inventory);
+                    displayInventory(input, inventory);
                     break;
                 case 9:
                     System.out.println("\nExiting the program...");
@@ -143,7 +143,6 @@ public class ToolInventoryApp {
         private static void searchToolByName(Scanner input, ArrayList<Tool> tools){
             String quit = "";
 
-
             // do/while loop so the user can remove more than one tool
             do{
                 System.out.println();
@@ -173,5 +172,26 @@ public class ToolInventoryApp {
                 quit = input.nextLine();
 
             } while(!quit.equalsIgnoreCase("n") );
+        }
+
+        private static void displayInventory(Scanner input, ArrayList<Tool> tools){
+            String quit = "";
+
+            do{
+                if(!tools.isEmpty()){
+                    for(Tool tool: tools){
+                        System.out.println(tool);
+                    }
+                } else {
+                    System.out.println("Error: No inventory to display");
+                }
+
+                System.out.println("\nQuit to main menu?");
+                System.out.println("Enter Y or N: ");
+
+                quit = input.nextLine();
+
+            } while(!quit.equalsIgnoreCase("y") );
+
         }
 }
