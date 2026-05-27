@@ -49,7 +49,7 @@ public class ToolInventoryApp {
                     removeTool(input, inventory);
                     break;
                 case 3:
-                    System.out.println("Search tool coming soon");
+                    searchToolByName(input, inventory);
                     break;
                 case 4:
                     System.out.println(inventory);
@@ -133,6 +133,41 @@ public class ToolInventoryApp {
                 }
 
                 System.out.println("\nRemove another tool?");
+                System.out.println("Enter Y or N: ");
+
+                quit = input.nextLine();
+
+            } while(!quit.equalsIgnoreCase("n") );
+        }
+
+        private static void searchToolByName(Scanner input, ArrayList<Tool> tools){
+            String quit = "";
+
+
+            // do/while loop so the user can remove more than one tool
+            do{
+                System.out.println();
+                System.out.println("=== Search for tool ===");
+                System.out.println();
+                System.out.println("Enter the name of the tool you wish to search.");
+                System.out.println();
+                System.out.println("Tool name: ");
+                String name = input.nextLine();
+
+                boolean found = false;
+
+                for(Tool tool: tools){
+                    if(tool.getName().equalsIgnoreCase(name)){
+                        System.out.println(tool);
+                        found = true;
+                    }
+                }
+
+                if (!found) {
+                    System.out.println("No tools found matching the name entered: " + name);
+                }
+
+                System.out.println("\nSearch for another tool?");
                 System.out.println("Enter Y or N: ");
 
                 quit = input.nextLine();
